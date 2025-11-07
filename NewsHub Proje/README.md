@@ -8,7 +8,7 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 
 ## ✨ Özellikler
 
-- Genel
+## Genel
 - Katmanlı Mimari: Skaalası genişletilebilir ve bakımı kolay MVC yapısı 
  - Çift Kimlik Doğrulama:
  - REST API için JWT (JSON Web Token) tabanlı koruma
