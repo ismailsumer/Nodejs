@@ -1,4 +1,29 @@
-NewsHub - Haber & Blog PlatformuBu proje, Node.js ve TypeScript kullanılarak geliştirilmiş, hem REST API hem de EJS tabanlı sunucu taraflı render (SSR) arayüzü sunan tam kapsamlı bir haber ve blog platformudur. Proje, kurumsal projelerde kullanılan katmanlı mimari (MVC) yapısını temel alır22.🎯 Proje AmacıProjenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir uygulama geliştirmektir. Bu kapsamda JWT tabanlı kimlik doğrulama, session yönetimi, Swagger ile API dokümantasyonu, MongoDB modelleme ve ilişkileri, veri doğrulama (validation) ve global hata yönetimi (global error handling) gibi konular pratik olarak ele alınmıştır3.API Dokümantasyonu (Swagger): http://localhost:3000/api-docs 4✨ ÖzelliklerGenelKatmanlı Mimari: Skaalası genişletilebilir ve bakımı kolay MVC yapısı5555.Çift Kimlik Doğrulama:REST API için JWT (JSON Web Token) tabanlı koruma6.EJS arayüzü için Session tabanlı oturum yönetimi7.Veri Doğrulama: Joi ile tüm kullanıcı girdilerinin sunucu tarafında doğrulanması8888.Merkezi Hata Yönetimi: Tüm hataların tek bir Global Error Handler ile yönetilmesi9999.API Dokümantasyonu: Swagger (OpenAPI) ile tüm API endpoint'lerinin belgelenmesi10.Kullanıcı RolleriAdmin: Tüm kullanıcıları ve içerikleri (post, yorum) yönetebilir11.User: Sisteme kayıt olabilir, giriş yapabilir, kendi postlarını oluşturabilir, güncelleyebilir, silebilir ve diğer postlara yorum yapabilir12121212.FonksiyonellikPost Yönetimi: Kullanıcıların haber/blog yazısı oluşturması, düzenlemesi, silmesi ve listelemesi13.Yorum Yönetimi: Kullanıcıların postlara yorum ekleyebilmesi. Yorumların sadece admin veya post sahibi tarafından silinebilmesi14.🛠️ Kullanılan TeknolojilerBackend: Node.js, Express.js, TypeScript 15View Engine: EJS (Embedded JavaScript) 16Veritabanı: MongoDB + Mongoose (ODM) 17Kimlik Doğrulama: JSON Web Token (JWT) 18, Express-session 19Parola Güvenliği: bcryptjs 20API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 21Veri Doğrulama: Joi 22📂 Proje MimarisiProje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.src/
+
+## NewsHub - Haber & Blog Platformu 
+
+Bu proje, Node.js ve TypeScript kullanılarak geliştirilmiş, hem REST API hem de EJS tabanlı sunucu taraflı render (SSR) arayüzü sunan tam kapsamlı bir haber ve blog platformudur. Proje, kurumsal projelerde kullanılan katmanlı mimari (MVC) yapısını temel alır22.
+
+## 🎯 Proje Amacı
+Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir uygulama geliştirmektir. Bu kapsamda JWT tabanlı kimlik doğrulama, session yönetimi, Swagger ile API dokümantasyonu, MongoDB modelleme ve ilişkileri, veri doğrulama (validation) ve global hata yönetimi (global error handling) gibi konular pratik olarak ele alınmıştır3.API Dokümantasyonu (Swagger): http://localhost:3000/api-docs 
+
+## ✨ Özellikler
+
+-Genel
+Katmanlı Mimari: Skaalası genişletilebilir ve bakımı kolay MVC yapısı 
+ - Çift Kimlik Doğrulama:
+ - REST API için JWT (JSON Web Token) tabanlı koruma
+ - EJS arayüzü için Session tabanlı oturum yönetimi.
+ - Veri Doğrulama: Joi ile tüm kullanıcı girdilerinin sunucu tarafında doğrulanması.
+ - Merkezi Hata Yönetimi: Tüm hataların tek bir Global Error Handler ile yönetilmesi
+ - API Dokümantasyonu: Swagger (OpenAPI) ile tüm API endpoint'lerinin belgelenmesi.
+
+- Kullanıcı Rolleri:
+ - Admin: Tüm kullanıcıları ve içerikleri (post, yorum) yönetebilir.
+ - User: Sisteme kayıt olabilir, giriş yapabilir, kendi postlarını oluşturabilir, güncelleyebilir, silebilir ve diğer postlara yorum yapabilir12121212.FonksiyonellikPost Yönetimi: Kullanıcıların haber/blog yazısı oluşturması, düzenlemesi, silmesi ve listelemesi13.Yorum Yönetimi: Kullanıcıların postlara yorum ekleyebilmesi. Yorumların sadece admin veya post sahibi tarafından silinebilmesi14.
+
+🛠️ Kullanılan TeknolojilerBackend: Node.js, Express.js, TypeScript 15View Engine: EJS (Embedded JavaScript) 16Veritabanı: MongoDB + Mongoose (ODM) 17Kimlik Doğrulama: JSON Web Token (JWT) 18, Express-session 19Parola Güvenliği: bcryptjs 20API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 21Veri Doğrulama: Joi 22
+
+📂 Proje MimarisiProje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.src/
 ├── config/         # Veritabanı, Swagger gibi yapılandırma dosyaları
 ├── controllers/    # İstekleri karşılayan ve cevapları düzenleyen katman
 ├── middlewares/    # Auth, validation, error handler gibi ara yazılımlar
@@ -11,6 +36,7 @@ NewsHub - Haber & Blog PlatformuBu proje, Node.js ve TypeScript kullanılarak ge
 ├── types/          # TypeScript tip genişletmeleri (d.ts)
 ├── app.ts          # Express uygulamasının ana yapılandırma dosyası
 └── server.ts       # Sunucuyu başlatan dosya
+
 🚀 Kurulum ve BaşlatmaProjeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.GereksinimlerNode.js (v16 veya üstü)MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
 cd NewsHub
 Gerekli paketleri yükleyin:Bashnpm install
