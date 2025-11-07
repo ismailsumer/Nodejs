@@ -34,8 +34,9 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 - Veri Doğrulama: Joi 22
 
 ## 📂 Proje Mimarisi
-Proje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.
-src/
+- Proje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.
+
+- src/
 ├── config/         # Veritabanı, Swagger gibi yapılandırma dosyaları
 ├── controllers/    # İstekleri karşılayan ve cevapları düzenleyen katman
 ├── middlewares/    # Auth, validation, error handler gibi ara yazılımlar
@@ -53,8 +54,9 @@ src/
 
 - Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
 
-- - Gereksinimler
-Node.js (v16 veya üstü)MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
+# Gereksinimler
+Node.js (v16 veya üstü)
+MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
 cd NewsHub
 Gerekli paketleri yükleyin:Bashnpm install
 .env (Ortam Değişkenleri) Dosyasını Oluşturun: 23Projenin ana dizininde .env adında bir dosya oluşturun ve aşağıdaki içeriği kendi bilgilerinize göre doldurun:Ini, TOML# Sunucu Ayarları
