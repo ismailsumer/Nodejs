@@ -33,45 +33,151 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 - API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 
 - Veri Doğrulama: Joi 22
 
-## 📂 Proje Mimarisi
-- Proje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.
 
-- src/
-├── config/         # Veritabanı, Swagger gibi yapılandırma dosyaları
-├── controllers/    # İstekleri karşılayan ve cevapları düzenleyen katman
-├── middlewares/    # Auth, validation, error handler gibi ara yazılımlar
-├── models/         # Mongoose veritabanı şemaları (modeller)
-├── routes/         # Endpoint tanımlamalarının yapıldığı katman
-├── services/       # İş mantığı ve veritabanı operasyonlarının yönetildiği katman
-├── validations/    # Joi doğrulama şemaları
-├── views/          # EJS arayüz dosyaları (.ejs)
-│   └── partials/   # Tekrar eden EJS parçaları (header, footer)
-├── types/          # TypeScript tip genişletmeleri (d.ts)
-├── app.ts          # Express uygulamasının ana yapılandırma dosyası
-└── server.ts       # Sunucuyu başlatan dosya
+## 📁 Proje Yapısı
 
-## 🚀 Kurulum ve Başlatma
+```
+NewsHub/
+├── src/
+│   ├── config/
+│   │   ├── db.ts              # MongoDB bağlantısı
+│   │   ├── cryptoJS.ts        # Şifreleme fonksiyonları
+│   │   └── swagger.ts         # Swagger yapılandırması
+│   ├── controllers/
+│   │   ├── authController.ts  # Kimlik doğrulama
+│   │   ├── newsController.ts  # Haber işlemleri
+│   │   ├── commentController.ts # Yorum işlemleri
+│   │   └── adminController.ts # Admin işlemleri
+│   ├── middlewares/
+│   │   ├── authMiddleware.ts  # JWT doğrulama
+│   │   ├── sessionAuthMiddleware.ts # Session doğrulama
+│   │   ├── roleMiddleware.ts  # Rol kontrolü
+│   │   ├── uploadMiddleware.ts # Dosya yükleme
+│   │   └── errorHandler.ts    # Global hata yönetimi
+│   ├── models/
+│   │   ├── userModel.ts       # Kullanıcı şeması
+│   │   ├── newsModel.ts       # Haber şeması
+│   │   ├── commentModel.ts    # Yorum şeması
+│   │   └── result.ts          # Response şablonu
+│   ├── routes/
+│   │   ├── authRoutes.ts      # Auth endpoint'leri
+│   │   ├── newsRoutes.ts      # News endpoint'leri
+│   │   ├── commentRoutes.ts   # Comment endpoint'leri
+│   │   ├── adminRoutes.ts     # Admin endpoint'leri
+│   │   └── viewRoutes.ts      # View (EJS) route'ları
+│   ├── utils/
+│   │   ├── jwtUtility.ts      # JWT fonksiyonları
+│   │   ├── eRoles.ts          # Rol enum'ları
+│   │   └── AppError.ts        # Custom error sınıfları
+│   ├── validations/
+│   │   ├── authValidator.ts   # Auth validation
+│   │   ├── newsValidator.ts   # News validation
+│   │   ├── commentValidator.ts # Comment validation
+│   │   └── index.ts           # Validation middleware
+│   ├── app.ts                 # Express app yapılandırması
+│   └── server.ts              # Server başlatma
+├── views/
+│   ├── layouts/
+│   │   └── main.ejs           # Ana layout
+│   ├── partials/
+│   │   ├── header.ejs         # Header
+│   │   ├── footer.ejs         # Footer
+│   │   └── flash.ejs          # Flash mesajları
+│   ├── pages/
+│   │   ├── home.ejs           # Ana sayfa
+│   │   ├── login.ejs          # Giriş
+│   │   ├── register.ejs       # Kayıt
+│   │   ├── profile.ejs        # Profil
+│   │   ├── news-detail.ejs    # Haber detay
+│   │   ├── create-news.ejs    # Haber oluştur
+│   │   ├── my-news.ejs        # Haberlerim
+│   │   └── admin.ejs          # Admin paneli
+│   └── errors/
+│       ├── 404.ejs            # 404 sayfası
+│       ├── 403.ejs            # 403 sayfası
+│       └── 500.ejs            # 500 sayfası
+├── public/
+│   ├── css/
+│   │   └── style.css          # Custom CSS
+│   ├── js/
+│   │   └── app.js             # Client-side JS
+│   └── images/                # Statik görseller
+├── uploads/                   # Yüklenen dosyalar
+├── .env                       # Ortam değişkenleri
+├── package.json
+├── tsconfig.json
+└── README.md
+```
 
-- Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
+---
 
-# Gereksinimler
-Node.js (v16 veya üstü)
-MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
-cd NewsHub
-Gerekli paketleri yükleyin:Bashnpm install
-.env (Ortam Değişkenleri) Dosyasını Oluşturun: 23Projenin ana dizininde .env adında bir dosya oluşturun ve aşağıdaki içeriği kendi bilgilerinize göre doldurun:Ini, TOML# Sunucu Ayarları
+
+## 📦 Kurulum
+
+### Gereksinimler
+- Node.js (v18+)
+- MongoDB (v6+)
+- npm veya yarn
+
+### 1. Projeyi İndirin
+```bash
+git clone https://github.com/your-username/newshub.git
+cd newshub
+```
+
+### 2. Bağımlılıkları Kurun
+```bash
+npm install
+```
+
+### 3. Ortam Değişkenlerini Ayarlayın
+`.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
+
+```env
+# Server Configuration
 PORT=3000
+NODE_ENV=development
 
-# MongoDB Bağlantı Adresi
-MONGODB_URI=mongodb://localhost:27017/NewsHub
+# Database Configuration
+MONGODB_URI=mongodb://localhost:27017
+DB_NAME=newshub
 
-# Güvenlik Anahtarları (Bu değerleri mutlaka değiştirin!)
-JWT_SECRET=BU_COK_GIZLI_BIR_ANAHTARDIR_DEGISTIRIN
-SESSION_SECRET=BU_DA_COK_GIZLI_BIR_SESSION_ANAHTARIDIR
-Uygulamayı Geliştirme Modunda Başlatın:Bu komut, TypeScript dosyalarını anında derler ve dosyalarda yapılan her değişiklikte sunucuyu otomatik olarak yeniden başlatır.Bashnpm run dev
-Uygulamayı Production Modunda Başlatın:Önce TypeScript kodunu JavaScript'e derleyin, sonra derlenmiş kodu çalıştırın.Bash# 1. Adım: Projeyi derle (dist/ klasörü oluşacak)
+# Crypto Configuration (Şifreleme için)
+CRYPTO_SECRET_KEY=UFYC634V78J6XI788G51K9444KL03637
+
+# JWT Configuration (Token için)
+JWT_SECRET=A7B9D4F2E8C1G5H3J6K8L0M9N2P4Q7R1S3T5U8V0W2X4Y6Z9
+JWT_EXPIRES_IN=7d
+JWT_REFRESH_EXPIRES_IN=30d
+
+# Session Configuration (EJS oturum yönetimi için)
+SESSION_SECRET=B8C0E5G7I9K2M4O6Q8S1U3W5Y7Z9A2C4E6G8I0K2M4O6Q8S0
+```
+
+### 4. MongoDB'yi Başlatın
+```bash
+# Windows
+mongod
+
+# Mac/Linux
+sudo systemctl start mongod
+```
+
+### 5. Uygulamayı Çalıştırın
+
+#### Development Modu
+```bash
+npm run dev
+```
+
+#### Production Modu
+```bash
 npm run build
+npm start
+```
 
-# 2. Adım: Derlenmiş uygulamayı başlat
-npm run start
-Uygulama artık http://localhost:3000 adresinde çalışıyor olacaktır.📝 API Endpoint ÖzetleriTüm API endpoint'leri /api/v1 ön eki ile çalışır. Detaylı dokümantasyon için Swagger adresini ziyaret edin.MetodEndpointAçıklamaYetki GerekliPOST/auth/registerYeni kullanıcı kaydı oluşturur. 24HayırPOST/auth/loginKullanıcı girişi yapar ve JWT üretir. 25HayırGET/auth/profileGiriş yapan kullanıcının bilgilerini getirir. 26Evet (JWT)GET/postsTüm postları listeler.HayırPOST/postsYeni bir post oluşturur.Evet (JWT)POST/posts/:postId/commentsBir posta yorum ekler.Evet (JWT)
+Uygulama çalıştıktan sonra:
+- **Frontend:** http://localhost:3000
+- **API Docs:** http://localhost:3000/api-docs
+
+---
