@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+
+<h1>Tüm Haberler ve Blog Yazıları</h1>
+
+<% if (locals.posts && posts.length > 0) { %>
+    <% posts.forEach(post => { %>
+        <article>
+            <h2><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+            <p>Yazar: <%= post.author.username %></p>
+            <p><%- post.content.substring(0, 150) %>...</p>
+        </article>
+        <hr>
+    <% }) %>
+<% } else { %>
+    <p>Gösterilecek hiç post bulunamadı.</p>
+<% } %>
+
+<%- include('partials/footer') %>

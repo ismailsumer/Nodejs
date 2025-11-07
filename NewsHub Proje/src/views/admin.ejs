@@ -1,0 +1,74 @@
+<%- include('partials/header') %>
+
+<h1>Admin Paneli</h1>
+<p style="color: #667eea; font-size: 1.1rem;">Hoş geldin, <%= user.username %>! Sistem yönetimi için tüm işlemleri buradan gerçekleştirebilirsin.</p>
+
+<div class="admin-section">
+    <h2>Kullanıcı Yönetimi</h2>
+    <% if (locals.allUsers && allUsers.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% allUsers.forEach(u => { %>
+                    <tr>
+                        <td><%= u.username %></td>
+                        <td><%= u.email %></td>
+                        <td><%= u.role %></td>
+                        <td>
+                            <% if (u._id.toString() !== user._id) { %>
+                                <form action="/admin/users/<%= u._id %>/delete" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-danger" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;" onclick="return confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?');">Sil</button>
+                                </form>
+                            <% } else { %>
+                                <span style="color: #999;">Kendinizi silemezsiniz</span>
+                            <% } %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>Hiç kullanıcı bulunamadı.</p>
+    <% } %>
+</div>
+
+<div class="admin-section">
+    <h2>Yazı Yönetimi</h2>
+    <% if (locals.allPosts && allPosts.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Başlık</th>
+                    <th>Yazar</th>
+                    <th>Tarih</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% allPosts.forEach(post => { %>
+                    <tr>
+                        <td><a href="/posts/<%= post._id %>" style="color: #667eea;"><%= post.title %></a></td>
+                        <td><%= post.author.username %></td>
+                        <td><%= new Date(post.createdAt).toLocaleDateString('tr-TR') %></td>
+                        <td>
+                            <form action="/posts/<%= post._id %>/delete" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;" onclick="return confirm('Bu yazıyı silmek istediğinizden emin misiniz?');">Sil</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>Hiç yazı bulunamadı.</p>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<div class="dashboard-header">
+    <h1>Dashboard</h1>
+    <a href="/posts/new" class="btn">Yeni Yazı Oluştur</a>
+</div>
+
+<h2>Yazılarınız</h2>
+<% if (locals.posts && posts.length > 0) { %>
+    <% posts.forEach(post => { %>
+        <article>
+            <h2><a href="/posts/<%= post._id %>"><%= post.title %></a></h2>
+            <p><%- post.content.substring(0, 150) %>...</p>
+            <div class="post-actions">
+                <a href="/posts/<%= post._id %>/edit" class="btn btn-secondary">Düzenle</a>
+                <form action="/posts/<%= post._id %>/delete" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Bu postu silmek istediğinizden emin misiniz?');">Sil</button>
+                </form>
+            </div>
+        </article>
+    <% }) %>
+<% } else { %>
+    <p>Henüz hiç yazı oluşturmadınız. <a href="/posts/new">İlk yazınızı oluşturun!</a></p>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,17 @@
+# Bağımlılıklar
+/node_modules
+
+# Derlenmiş TypeScript dosyaları
+/dist
+
+# Gizli ortam değişkenleri
+.env
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db

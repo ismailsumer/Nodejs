@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsHub</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Ana Sayfa</a>
+        <% if (locals.user) { %>
+            <a href="/dashboard">Dashboard</a>
+            <% if (user.role === 'Admin') { %>
+                <a href="/admin">Admin Paneli</a>
+            <% } %>
+            <a href="/posts/new">Yeni Yazı</a>
+            <span class="user-info">Hoş geldin, <%= user.username %>!</span>
+            <a href="/logout" class="logout">Çıkış Yap</a>
+        <% } else { %>
+            <a href="/login">Giriş Yap</a>
+            <a href="/register">Kayıt Ol</a>
+        <% } %>
+    </nav>
+    <main>

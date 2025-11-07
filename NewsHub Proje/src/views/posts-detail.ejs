@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+
+<article>
+    <h1><%= post.title %></h1>
+    <p style="color: #667eea; font-weight: 600;"><strong>Yazar:</strong> <%= post.author.username %></p>
+    <p style="color: #666; font-size: 0.9rem;">
+        <strong>Tarih:</strong> <%= new Date(post.createdAt).toLocaleDateString('tr-TR') %>
+    </p>
+    <hr>
+    <div style="margin: 2rem 0; line-height: 1.8;"><%- post.content %></div>
+</article>
+
+<hr style="margin: 3rem 0;">
+
+<div class="comments-section">
+    <h3>Yorumlar (<%= post.comments ? post.comments.length : 0 %>)</h3>
+    
+    <% if (locals.user) { %>
+        <h4>Yorum Yap</h4>
+        <form action="/posts/<%= post._id %>/comments" method="POST">
+            <div>
+                <textarea id="text" name="text" required placeholder="Yorumunuzu yazın..."></textarea>
+            </div>
+            <button type="submit">Gönder</button>
+        </form>
+    <% } else { %>
+        <p><a href="/login">Yorum yapmak için giriş yapın</a></p>
+    <% } %>
+    
+    <hr style="margin: 2rem 0;">
+    
+    <% if (post.comments && post.comments.length > 0) { %>
+        <% post.comments.forEach(comment => { %>
+            <div class="comment">
+                <p class="comment-author"><%= comment.author.username %></p>
+                <p class="comment-text"><%= comment.text %></p>
+                <% if (locals.user && (user._id === comment.author._id.toString() || user._id === post.author._id.toString() || user.role === 'Admin')) { %>
+                    <form action="/posts/<%= post._id %>/comments/<%= comment._id %>/delete" method="POST" style="display: inline; margin-top: 0.5rem;">
+                        <button type="submit" class="btn btn-danger" style="padding: 0.3rem 0.8rem; font-size: 0.85rem;" onclick="return confirm('Bu yorumu silmek istediğinizden emin misiniz?');">Sil</button>
+                    </form>
+                <% } %>
+            </div>
+        <% }) %>
+    <% } else { %>
+        <p>Bu yazıya henüz yorum yapılmamış. İlk yorumu siz yapın!</p>
+    <% } %>
+</div>
+
+<%- include('partials/footer') %>

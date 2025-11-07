@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+
+<h1>Yeni Yazı Oluştur</h1>
+
+<% if (locals.error) { %>
+    <div class="error"><%= error %></div>
+<% } %>
+
+<form action="/posts/new" method="POST">
+    <div>
+        <label for="title">Başlık:</label>
+        <input type="text" id="title" name="title" required placeholder="Yazınızın başlığını girin">
+    </div>
+    <div>
+        <label for="content">İçerik:</label>
+        <textarea id="content" name="content" required placeholder="Yazınızın içeriğini girin"></textarea>
+    </div>
+    <button type="submit">Yayınla</button>
+    <a href="/dashboard" class="btn btn-secondary" style="margin-left: 1rem;">İptal</a>
+</form>
+
+<%- include('partials/footer') %>
