@@ -1,10 +1,11 @@
 
 ## NewsHub - Haber & Blog Platformu 
 
-Bu proje, Node.js ve TypeScript kullanılarak geliştirilmiş, hem REST API hem de EJS tabanlı sunucu taraflı render (SSR) arayüzü sunan tam kapsamlı bir haber ve blog platformudur. Proje, kurumsal projelerde kullanılan katmanlı mimari (MVC) yapısını temel alır22.
+Bu proje, Node.js ve TypeScript kullanılarak geliştirilmiş, hem REST API hem de EJS tabanlı sunucu taraflı render (SSR) arayüzü sunan tam kapsamlı bir haber ve blog platformudur. Proje, kurumsal projelerde kullanılan katmanlı mimari (MVC) yapısını temel alır.
 
 ## 🎯 Proje Amacı
-Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir uygulama geliştirmektir. Bu kapsamda JWT tabanlı kimlik doğrulama, session yönetimi, Swagger ile API dokümantasyonu, MongoDB modelleme ve ilişkileri, veri doğrulama (validation) ve global hata yönetimi (global error handling) gibi konular pratik olarak ele alınmıştır3.API Dokümantasyonu (Swagger): http://localhost:3000/api-docs 
+Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir uygulama geliştirmektir. Bu kapsamda JWT tabanlı kimlik doğrulama, session yönetimi, Swagger ile API dokümantasyonu, MongoDB modelleme ve ilişkileri, veri doğrulama (validation) ve global hata yönetimi (global error handling) gibi konular pratik olarak ele alınmıştır.
+- API Dokümantasyonu (Swagger): http://localhost:3000/api-docs 
 
 ## ✨ Özellikler
 
@@ -31,7 +32,7 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 - Kimlik Doğrulama: JSON Web Token (JWT) , Express-session 
 - Parola Güvenliği: bcryptjs 
 - API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 
-- Veri Doğrulama: Joi 22
+- Veri Doğrulama: Joi 
 
 
 ## 📁 Proje Yapısı
