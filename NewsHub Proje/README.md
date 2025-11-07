@@ -17,7 +17,7 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
  - Merkezi Hata Yönetimi: Tüm hataların tek bir Global Error Handler ile yönetilmesi
  - API Dokümantasyonu: Swagger (OpenAPI) ile tüm API endpoint'lerinin belgelenmesi.
 
-- Kullanıcı Rolleri:
+###  Kullanıcı Rolleri:
  - Admin: Tüm kullanıcıları ve içerikleri (post, yorum) yönetebilir.
  - User: Sisteme kayıt olabilir, giriş yapabilir, kendi postlarını oluşturabilir, güncelleyebilir, silebilir ve diğer postlara yorum yapabilir12121212.FonksiyonellikPost Yönetimi: Kullanıcıların haber/blog yazısı oluşturması, düzenlemesi, silmesi ve listelemesi13.Yorum Yönetimi: Kullanıcıların postlara yorum ekleyebilmesi. Yorumların sadece admin veya post sahibi tarafından silinebilmesi14.
 
