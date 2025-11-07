@@ -8,7 +8,7 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 
 ## ✨ Özellikler
 
-## Genel
+### Genel
 - Katmanlı Mimari: Skaalası genişletilebilir ve bakımı kolay MVC yapısı 
  - Çift Kimlik Doğrulama:
  - REST API için JWT (JSON Web Token) tabanlı koruma
@@ -19,11 +19,23 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 
 ###  Kullanıcı Rolleri:
  - Admin: Tüm kullanıcıları ve içerikleri (post, yorum) yönetebilir.
- - User: Sisteme kayıt olabilir, giriş yapabilir, kendi postlarını oluşturabilir, güncelleyebilir, silebilir ve diğer postlara yorum yapabilir12121212.FonksiyonellikPost Yönetimi: Kullanıcıların haber/blog yazısı oluşturması, düzenlemesi, silmesi ve listelemesi13.Yorum Yönetimi: Kullanıcıların postlara yorum ekleyebilmesi. Yorumların sadece admin veya post sahibi tarafından silinebilmesi14.
+ - User: Sisteme kayıt olabilir, giriş yapabilir, kendi postlarını oluşturabilir, güncelleyebilir, silebilir ve diğer postlara yorum yapabilir.
+ ### Fonksiyonellik
+- Post Yönetimi: Kullanıcıların haber/blog yazısı oluşturması, düzenlemesi, silmesi ve listelemesi.
+ - Yorum Yönetimi: Kullanıcıların postlara yorum ekleyebilmesi. Yorumların sadece admin veya post sahibi tarafından silinebilmesi.
 
-🛠️ Kullanılan TeknolojilerBackend: Node.js, Express.js, TypeScript 15View Engine: EJS (Embedded JavaScript) 16Veritabanı: MongoDB + Mongoose (ODM) 17Kimlik Doğrulama: JSON Web Token (JWT) 18, Express-session 19Parola Güvenliği: bcryptjs 20API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 21Veri Doğrulama: Joi 22
+## 🛠️ Kullanılan Teknolojiler
+- Backend: Node.js, Express.js, TypeScript
+- View Engine: EJS (Embedded JavaScript) 
+- Veritabanı: MongoDB + Mongoose (ODM) 
+- Kimlik Doğrulama: JSON Web Token (JWT) , Express-session 
+- Parola Güvenliği: bcryptjs 
+- API Dokümantasyonu: Swagger (swagger-ui-express, swagger-jsdoc) 
+- Veri Doğrulama: Joi 22
 
-📂 Proje MimarisiProje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.src/
+## 📂 Proje Mimarisi
+Proje, sorumlulukların ayrılması (Separation of Concerns) ilkesine dayalı katmanlı bir mimariye sahiptir.
+src/
 ├── config/         # Veritabanı, Swagger gibi yapılandırma dosyaları
 ├── controllers/    # İstekleri karşılayan ve cevapları düzenleyen katman
 ├── middlewares/    # Auth, validation, error handler gibi ara yazılımlar
@@ -37,7 +49,12 @@ Projenin temel amacı, modern backend teknolojilerini kullanarak kapsamlı bir u
 ├── app.ts          # Express uygulamasının ana yapılandırma dosyası
 └── server.ts       # Sunucuyu başlatan dosya
 
-🚀 Kurulum ve BaşlatmaProjeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.GereksinimlerNode.js (v16 veya üstü)MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
+## 🚀 Kurulum ve Başlatma
+
+- Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin.
+
+- - Gereksinimler
+Node.js (v16 veya üstü)MongoDB (yerel veya bulut üzerinde, örn: MongoDB Atlas)AdımlarProjeyi klonlayın
 cd NewsHub
 Gerekli paketleri yükleyin:Bashnpm install
 .env (Ortam Değişkenleri) Dosyasını Oluşturun: 23Projenin ana dizininde .env adında bir dosya oluşturun ve aşağıdaki içeriği kendi bilgilerinize göre doldurun:Ini, TOML# Sunucu Ayarları
